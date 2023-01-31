@@ -16,7 +16,7 @@ let limit = 1;
 // We need to make an api request in order to get the lat and long that we can then use in our weather forecast call.*/
 
 let geoDataUrl = 'http://api.openweathermap.org/geo/1.0/direct?' + userCity + limit + apiKey;
-
+// creating a fetch request 
 fetch(geoDataUrl)
 .then (response => response.json())
 .then (data => console.log(data))
