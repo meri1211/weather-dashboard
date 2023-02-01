@@ -5,8 +5,14 @@ let apiKey = "228a49a68770cb0dc34cfa02c84310c3";
 //created the latitude and longitude variables that are going to take an give us the city.
 let lat;
 let lon;
-// creating the query url
-queryURL = "https://openweathermap.org/forecast5" + userCity + apiKey;
+// creating the query url for the 5 day forecast
+queryURL =
+  "https://openweathermap.org/forecast?" +
+  "lat=" +
+  lat +
+  "&lon=" +
+  lon +
+  "&limit=1&appid=228a49a68770cb0dc34cfa02c84310c3";
 
 //getting just one city result
 let limit = 1;
@@ -26,17 +32,28 @@ $.ajax({
   method: "GET",
 })
   .then(function (response) {
-    return response
+    return response;
   })
-  .then(response => {
-    cityData = response
-    console.log(cityData)
-    userCity = cityData[0].name
-    console.log(userCity)
-    lat = cityData[0].lat
-    console.log(lat)
-    lon = cityData[0].lon
-    console.log(lon)
+  .then((response) => {
+    cityData = response;
+    console.log(cityData);
+    userCity = cityData[0].name;
+    console.log(userCity);
+    lat = cityData[0].lat;
+    console.log(lat);
+    lon = cityData[0].lon;
+    console.log(lon);
+  });
+// Making a request for the 5 day forecast api.
+$.ajax({
+  url:
+    "https://openweathermap.org/forecast?" +
+    "lat=" +
+    lat +
+    "&lon=" +
+    lon +
+    "&limit=1&appid=228a49a68770cb0dc34cfa02c84310c3",
+  method: "GET",
+}).then(function (data) {
+  console.log(data);
 });
- 
-    
