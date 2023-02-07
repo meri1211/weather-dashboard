@@ -6,7 +6,7 @@ let apiKey = "228a49a68770cb0dc34cfa02c84310c3";
 let lat;
 let lon;
 // creating the query url for the 5 day forecast
-queryURL =
+let queryURL =
   "https://openweathermap.org/forecast?" +
   "lat=" +
   lat +
@@ -20,11 +20,29 @@ let limit = 1;
 /* Direct geocoding allows to get geographical coordinates (lat, lon) by using name of the location (city name or area name).
 // We need to make an api request in order to get the lat and long that we can then use in our weather forecast call.*/
 let cityData;
-/*fetch('http://api.openweathermap.org/geo/1.0/direct?q='+ userCity +'&limit=1&appid=228a49a68770cb0dc34cfa02c84310c3')
-    .then (response => response.json())
-    .then (cityData => console.log(cityData))*/
+fetch(
+  "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    userCity +
+    "&limit=1&appid=228a49a68770cb0dc34cfa02c84310c3"
+)
+  .then(response => response.json())
+  .then(cityData => {
+    console.log(cityData);
+    cityUser = cityData[0].name;
+    console.log(cityUser);
+    lat = cityData[0].lat;
+    console.log(lat);
+    lon = cityData[0].lon;
+    console.log(lon);
+});
+fetch(queryURL)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+    });
+
 // Used the ajax api method so that I can return the data.
-$.ajax({
+/*$.ajax({
   url:
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
     userCity +
@@ -56,4 +74,4 @@ $.ajax({
   method: "GET",
 }).then(function (data) {
   console.log(data);
-});
+});*/
