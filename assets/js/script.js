@@ -25,8 +25,8 @@ fetch(
     userCity +
     "&limit=1&appid=228a49a68770cb0dc34cfa02c84310c3"
 )
-  .then(response => response.json())
-  .then(cityData => {
+  .then((response) => response.json())
+  .then((cityData) => {
     console.log(cityData);
     cityUser = cityData[0].name;
     console.log(cityUser);
@@ -34,44 +34,19 @@ fetch(
     console.log(lat);
     lon = cityData[0].lon;
     console.log(lon);
-});
-fetch(queryURL)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-    });
+    cityUser = cityData[0].name
 
-// Used the ajax api method so that I can return the data.
-/*$.ajax({
-  url:
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
-    userCity +
-    "&limit=1&appid=228a49a68770cb0dc34cfa02c84310c3",
-  method: "GET",
-})
-  .then(function (response) {
-    return response;
-  })
-  .then((response) => {
-    cityData = response;
-    console.log(cityData);
-    userCity = cityData[0].name;
-    console.log(userCity);
-    lat = cityData[0].lat;
-    console.log(lat);
-    lon = cityData[0].lon;
-    console.log(lon);
   });
-// Making a request for the 5 day forecast api.
-$.ajax({
-  url:
-    "https://openweathermap.org/forecast?" +
-    "lat=" +
-    lat +
-    "&lon=" +
-    lon +
-    "&limit=1&appid=228a49a68770cb0dc34cfa02c84310c3",
-  method: "GET",
-}).then(function (data) {
-  console.log(data);
-});*/
+
+
+
+  fetch( "https://openweathermap.org/forecast?" +
+  "lat=" +
+  lat +
+  "&lon=" +
+  lon +
+  "&limit=1&appid=228a49a68770cb0dc34cfa02c84310c3")
+    .then((response) => response.json())
+    .then((data) => {
+    console.log(data);
+  });
